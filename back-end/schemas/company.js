@@ -31,6 +31,12 @@ export default {
       description: 'Tell us about this company',
     },
     {
+      name: 'companyType',
+      title: 'Company type',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'companyType' }] }],
+    },
+    {
       name: 'county',
       title: 'County',
       type: 'array',
