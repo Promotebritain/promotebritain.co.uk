@@ -1,4 +1,5 @@
 import { GrShop as icon } from 'react-icons/gr'
+// import PhoneNumberInput from '../components/phone-number'
 
 export default {
   name: 'company',
@@ -17,12 +18,36 @@ export default {
       title: 'Slug',
       type: 'slug',
       options: { source: 'name', maxLength: 200 },
+      validation: Rule => Rule.required(),
+      description: 'This will the part of the URL for this content.',
     },
     {
       name: 'image',
       title: 'Company image',
       type: 'image',
       options: { hotspot: true },
+    },
+    {
+      name: 'companyUrl',
+      title: 'Company URL',
+      type: 'url',
+      validation: Rule =>
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto', 'tel'],
+        }),
+      description: 'Add the full URL including https or http',
+    },
+    {
+      name: 'companyPhone',
+      title: 'Company Phone',
+      type: 'string',
+      validation: Rule =>
+        Rule.optional().custom(input => {
+          if (/^\d+$/.test(input)) return true
+          return `Only accepts numbers!`
+        }),
+
+      // inputComponent: PhoneNumberInput,
     },
     {
       name: 'description',
