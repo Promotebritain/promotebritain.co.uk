@@ -46,7 +46,6 @@ export default {
           if (/^\d+$/.test(input)) return true
           return `Only accepts numbers!`
         }),
-
       // inputComponent: PhoneNumberInput,
     },
     {
@@ -62,16 +61,13 @@ export default {
       of: [{ type: 'reference', to: [{ type: 'companyType' }] }],
     },
     {
-      name: 'country',
-      title: 'Country',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'country' }] }],
-    },
-    {
       name: 'county',
       title: 'County',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'county' }] }],
+      type: 'reference',
+      to: [{ type: 'county' }],
     },
   ],
+  initialValue: {
+    companyUrl: `https://`,
+  },
 }
