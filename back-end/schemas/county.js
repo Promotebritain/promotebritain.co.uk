@@ -27,8 +27,8 @@ export default {
     {
       name: 'country',
       title: 'Country',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'country' }] }],
+      type: 'reference',
+      to: [{ type: 'country' }],
     },
   ],
 }
