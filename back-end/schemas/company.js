@@ -62,6 +62,12 @@ export default {
       of: [{ type: 'reference', to: [{ type: 'companyType' }] }],
     },
     {
+      name: 'country',
+      title: 'Country',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'country' }] }],
+    },
+    {
       name: 'county',
       title: 'County',
       type: 'array',
