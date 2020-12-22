@@ -32,3 +32,5 @@ export default {
     },
   ],
 }
+// query for counties
+// *[_type == "country"]{...,county[]->}
