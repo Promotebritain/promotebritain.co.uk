@@ -1,3 +1,12 @@
+const activeEnv =
+  process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
+
+console.log(`Using environment config: '${activeEnv}'`)
+
+require('dotenv').config({
+  path: `.env.${activeEnv}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Chakra UI`,
@@ -7,6 +16,17 @@ module.exports = {
   plugins: [
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: `aw3g79ut`,
+        dataset: `production`,
+        watchMode: true,
+        token: process.env.SANITY_TOKEN,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -14,8 +34,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
