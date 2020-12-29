@@ -19,7 +19,7 @@ export default function County(props) {
           )
         })
       ) : (
-        <p>no</p>
+        <p>no companies 😢</p>
       )}
     </div>
   )
