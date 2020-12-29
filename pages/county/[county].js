@@ -5,17 +5,22 @@ export default function County(props) {
   const { companies } = props
   return (
     <div>
-      {companies.map(company => {
-        return (
-          <article key={company.id}>
-            <h2>
-              <Link href={`/company/${company.slug.current}`}>
-                <a>{company.name}</a>
-              </Link>
-            </h2>
-          </article>
-        )
-      })}
+      {companies.length ? (
+        companies.map(company => {
+          const { id, slug, name } = company
+          return (
+            <article key={id}>
+              <h2>
+                <Link href={`/company/${slug}`}>
+                  <a>{name}</a>
+                </Link>
+              </h2>
+            </article>
+          )
+        })
+      ) : (
+        <p>no</p>
+      )}
     </div>
   )
 }
@@ -29,8 +34,9 @@ export async function getStaticProps({ params }) {
     "companies": 
       *[_type == "company" && references(^._id)]{
         'id': _id,
-        ...
-      }
+        name,
+        'slug':slug.current
+      } | order(name asc)
     }
   `)
   return { props: { ...company } }
