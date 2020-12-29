@@ -7,7 +7,8 @@ export default function County(props) {
     <div>
       {companies.length ? (
         companies.map(company => {
-          const { id, slug, name } = company
+          const { id, slug, name, visible } = company
+          if (!visible) return
           return (
             <article key={id}>
               <h2>
@@ -35,6 +36,7 @@ export async function getStaticProps({ params }) {
       *[_type == "company" && references(^._id)]{
         'id': _id,
         name,
+        visible,
         'slug':slug.current
       } | order(name asc)
     }
