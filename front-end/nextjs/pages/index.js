@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import sanityClient from '../sanity-client'
 
 export default function Home({ countries }) {
@@ -9,9 +10,17 @@ export default function Home({ countries }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {countries.map(country => (
-          <p key={country.id}>{country.name}</p>
-        ))}
+        {countries.map(country => {
+          return (
+            <article key={country.id}>
+              <h2>
+                <Link href={`${country.slug}`}>
+                  <a>{country.name}</a>
+                </Link>
+              </h2>
+            </article>
+          )
+        })}
       </main>
     </div>
   )
