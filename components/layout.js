@@ -1,4 +1,6 @@
 import { Box } from 'theme-ui'
+import { Footer } from './footer'
+import { Header } from './header'
 
 export const Layout = ({ children }) => {
   return (
@@ -11,7 +13,9 @@ export const Layout = ({ children }) => {
         padding: '0 20px',
       }}
     >
+      <Header />
       {children}
+      <Footer />
     </Box>
   )
 }
