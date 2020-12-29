@@ -1,4 +1,5 @@
 // *[_type == "county" && name == 'Avon']{...,"companies": *[_type == "company" && references(^._id)]{...}}
+import Link from 'next/link'
 import sanityClient from '../sanity-client'
 
 export default function County(props) {
@@ -8,10 +9,13 @@ export default function County(props) {
     <div>
       {counties.map(county => {
         return (
-          <>
-            <p>{county.name}</p>
-            <p>{county.slug}</p>
-          </>
+          <article key={county.id}>
+            <h2>
+              <Link href={`${county.slug}`}>
+                <a>{county.name}</a>
+              </Link>
+            </h2>
+          </article>
         )
       })}
     </div>
@@ -24,6 +28,7 @@ export async function getStaticProps({ params }) {
   const [county] = await sanityClient.fetch(`
     *[_type == "country" && slug.current == '${country}']
 	    {"counties": *[_type == "county" && references(^._id)]{
+        '_id': id,
         name,
         'slug':slug.current
       }
