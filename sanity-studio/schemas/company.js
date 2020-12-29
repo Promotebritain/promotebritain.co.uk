@@ -63,8 +63,8 @@ export default {
     {
       name: 'county',
       title: 'County',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'county' }] }],
+      type: 'reference',
+      to: [{ type: 'county' }],
     },
     {
       name: 'visible',
