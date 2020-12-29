@@ -24,5 +24,11 @@ export default {
       type: 'image',
       options: { hotspot: true },
     },
+    {
+      name: 'country',
+      title: 'Country',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'country' }] }],
+    },
   ],
 }

@@ -24,12 +24,6 @@ export default {
       type: 'image',
       options: { hotspot: true },
     },
-    {
-      name: 'county',
-      title: 'County',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'county' }] }],
-    },
   ],
 }
 // query for counties
