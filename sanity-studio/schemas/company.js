@@ -66,6 +66,14 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'county' }] }],
     },
+    {
+      name: 'visible',
+      title: 'Visible',
+      type: 'boolean',
+      description:
+        'Use this to set if the company is visible on the site.',
+      validation: Rule => Rule.required(),
+    },
   ],
   initialValue: {
     companyUrl: `https://`,
