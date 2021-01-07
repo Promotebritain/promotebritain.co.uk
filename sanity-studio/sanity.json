@@ -10,7 +10,7 @@
   "__experimental_spaces": [
     {
       "name": "production",
-      "title": "Prod",
+      "title": "Production",
       "default": true,
       "api": {
         "projectId": "aw3g79ut",
@@ -18,11 +18,11 @@
       }
     },
     {
-      "name": "develop",
-      "title": "Develop",
+      "name": "development",
+      "title": "Development",
       "api": {
         "projectId": "aw3g79ut",
-        "dataset": "develop"
+        "dataset": "development"
       }
     }
   ],
