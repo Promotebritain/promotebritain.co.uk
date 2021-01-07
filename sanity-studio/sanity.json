@@ -7,6 +7,25 @@
     "projectId": "aw3g79ut",
     "dataset": "production"
   },
+  "__experimental_spaces": [
+    {
+      "name": "production",
+      "title": "Prod",
+      "default": true,
+      "api": {
+        "projectId": "aw3g79ut",
+        "dataset": "production"
+      }
+    },
+    {
+      "name": "develop",
+      "title": "Develop",
+      "api": {
+        "projectId": "aw3g79ut",
+        "dataset": "develop"
+      }
+    }
+  ],
   "plugins": [
     "@sanity/base",
     "@sanity/components",
