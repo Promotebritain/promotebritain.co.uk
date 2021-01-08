@@ -10,35 +10,46 @@ export async function getServerSideProps({ res }) {
   const query = groq`{
       "countries": *[_type == 'country']{slug},
       "counties": *[_type == 'county']{slug},
+      "companies": *[_type == 'company']{slug},      
     }`
   const urls = await sanityClient.fetch(query)
-  const countries = urls.countries.map(page => {
+  const countries = urls.countries.map(country => {
     const slug =
-      page.slug.current === '/' ? '/' : `/${page.slug.current}`
+      country.slug.current === '/' ? '/' : `/${country.slug.current}`
     return `
       <loc>${baseUrl}${slug}</loc>
       <changefreq>daily</changefreq>
       <priority>0.7</priority>
     `
   })
-  const counties = urls.counties.map(page => {
+  const counties = urls.counties.map(county => {
     const slug =
-      page.slug.current === '/' ? '/' : `/${page.slug.current}`
+      county.slug.current === '/' ? '/' : `/${county.slug.current}`
     return `
       <loc>${baseUrl}${slug}</loc>
       <changefreq>daily</changefreq>
       <priority>0.7</priority>
     `
   })
-  const locations = [...countries, ...counties]
+  const companies = urls.companies.map(company => {
+    const slug =
+      company.slug.current === '/' ? '/' : `/${company.slug.current}`
+    return `
+      <loc>${baseUrl}${slug}</loc>
+      <changefreq>daily</changefreq>
+      <priority>0.7</priority>
+    `
+  })
+  const locations = [...countries, ...counties, ...companies]
   const createSitemap = () => `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         ${locations
           .map(location => {
-            return `<url>
-                      ${location}
-                    </url>
-                  `
+            return `
+              <url>
+                ${location}
+              </url>
+            `
           })
           .join('')}
     </urlset>
