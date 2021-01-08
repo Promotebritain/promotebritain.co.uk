@@ -1,0 +1,37 @@
+export default {
+  title: 'Promote Britain',
+  description: 'Local businesses in Britain',
+  keywords: 'shops, businesses',
+  robot: 'index, follow',
+  'application-name': 'Promote Britian - Local Businesses in Britian',
+  'apple-mobile-web-app-capable': 'yes',
+  'msapplication-TileColor': '#2B5797',
+  'msapplication-tap-highlight': 'no',
+  'theme-color': '#000000',
+  viewport: 'width=device-width, initial-scale=1',
+  canonical: 'https://www.promotebritain.co.uk/',
+  openGraph: {
+    type: 'profile',
+    locale: 'en_GB',
+    url: 'https://www.promotebritain.co.uk/',
+    title: 'Promote Britian',
+    description: 'Local businesses in Britain',
+    site_name: 'Promote Britian - Local Businesses in Britian',
+    images: [
+      {
+        url: '',
+        width: '1200',
+        height: '1200',
+        type: 'image/png',
+        alt: '',
+      },
+      {
+        url: '',
+        width: '1200',
+        height: '630',
+        type: 'image/png',
+        alt: '',
+      },
+    ],
+  },
+}
