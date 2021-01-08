@@ -1,5 +1,7 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
+import { Box } from 'theme-ui'
 import sanityClient from '../sanity-client'
 
 export default function Home({ countries }) {
@@ -18,6 +20,24 @@ export default function Home({ countries }) {
                   <a>{country.name}</a>
                 </Link>
               </h2>
+              <Link href={`/country/${country.slug}`}>
+                <Box
+                  as="div"
+                  sx={{
+                    position: 'relative',
+                    width: 200,
+                    height: 100,
+                    cursor: 'pointer',
+                  }}
+                >
+                  <Image
+                    src={country.image}
+                    alt={country.name}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </Box>
+              </Link>
             </article>
           )
         })}
@@ -31,7 +51,8 @@ export async function getStaticProps() {
     `*[_type == 'country']{
        'id': _id,
        name,
-       'slug': slug.current 
+       'slug': slug.current,
+       "image": image.asset->url
      } | order(name asc)`
   )
 

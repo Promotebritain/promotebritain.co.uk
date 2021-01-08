@@ -30,7 +30,7 @@ export async function getStaticProps({ params }) {
         'id': _id,
         name,
         'slug':slug.current
-      }
+      } | order(name asc)
     }`)
   return { props: { ...county } }
 }

@@ -1,12 +1,31 @@
 {
   "root": true,
   "project": {
-    "name": "promote-britain "
+    "name": "promote-britain"
   },
   "api": {
     "projectId": "aw3g79ut",
     "dataset": "production"
   },
+  "__experimental_spaces": [
+    {
+      "name": "production",
+      "title": "Production",
+      "default": true,
+      "api": {
+        "projectId": "aw3g79ut",
+        "dataset": "production"
+      }
+    },
+    {
+      "name": "development",
+      "title": "Development",
+      "api": {
+        "projectId": "aw3g79ut",
+        "dataset": "development"
+      }
+    }
+  ],
   "plugins": [
     "@sanity/base",
     "@sanity/components",
