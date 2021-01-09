@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Box } from 'theme-ui'
@@ -7,10 +6,6 @@ import sanityClient from '../sanity-client'
 export default function Home({ countries }) {
   return (
     <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main>
         {countries.map(country => {
           return (
