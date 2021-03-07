@@ -13,12 +13,10 @@ export default function County({
   return (
     <div>
       <p>{companyPhone}</p>
-      {/* {companyType.map(t => {
-        console.log('=====================')
-        console.log(t)
-        console.log('=====================')
-        return <p>yo</p>
-      })} */}
+      <p>Company Type</p>
+      {companyType.map(t => {
+        return <span>{t.name}</span>
+      })}
       <p>{companyUrl}</p>
       <p>{name}</p>
       <Box
@@ -46,6 +44,11 @@ export async function getStaticProps({ params }) {
   const [company] = await sanityClient.fetch(`
   *[_type == "company" && slug.current == '${companySlug}']{
     "image": image.asset->url,
+    companyType[]->{
+      _id,
+      name,
+      slug
+    },
     ...
     }
   `)
