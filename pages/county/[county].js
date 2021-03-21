@@ -4,24 +4,28 @@ import sanityClient from '../../sanity-client'
 export default function County(props) {
   const { companies } = props
   return (
-    <div>
-      {companies.length ? (
-        companies.map(company => {
-          const { id, slug, name, visible } = company
-          if (!visible) return
-          return (
-            <article key={id}>
-              <h2>
-                <Link href={`/company/${slug}`}>
-                  <a>{name}</a>
-                </Link>
-              </h2>
-            </article>
-          )
-        })
-      ) : (
-        <p>no companies 😢</p>
-      )}
+    <div className="mb-24">
+      <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
+        {companies.length ? (
+          companies.map(company => {
+            const { id, slug, name, visible } = company
+            if (!visible) return
+            return (
+              <Link href={`/company/${slug}`} key={id}>
+                <li className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200 cursor-pointer">
+                  <article className="flex-1 flex flex-col p-8">
+                    <h3 className="mt-6 text-gray-900 text-lg font-medium">
+                      {name}
+                    </h3>
+                  </article>
+                </li>
+              </Link>
+            )
+          })
+        ) : (
+          <p>no companies 😢</p>
+        )}
+      </ul>
     </div>
   )
 }

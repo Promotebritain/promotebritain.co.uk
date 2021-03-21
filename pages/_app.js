@@ -1,18 +1,16 @@
 import { DefaultSeo } from 'next-seo'
 import React from 'react'
-import { ThemeProvider } from 'theme-ui'
+import 'tailwindcss/tailwind.css'
 import { Layout } from '../components/layout'
 import SEO from '../next-seo.config'
-import theme from '../theme'
+import '../styles/globals.css'
 
 function App({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
-      <Layout>
-        <DefaultSeo {...SEO} />
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+    <Layout>
+      <DefaultSeo {...SEO} />
+      <Component {...pageProps} />
+    </Layout>
   )
 }
 
