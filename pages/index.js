@@ -1,41 +1,39 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Box } from 'theme-ui'
 import sanityClient from '../sanity-client'
 
 export default function Home({ countries }) {
   return (
     <div>
-      <main>
-        {countries.map(country => {
-          return (
-            <article key={country.id}>
-              <h2>
-                <Link href={`/country/${country.slug}`}>
-                  <a>{country.name}</a>
-                </Link>
-              </h2>
-              <Link href={`/country/${country.slug}`}>
-                <Box
-                  as="div"
-                  sx={{
-                    position: 'relative',
-                    width: 200,
-                    height: 100,
-                    cursor: 'pointer',
-                  }}
-                >
-                  <Image
-                    src={country.image}
-                    alt={country.name}
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </Box>
+      <main className="mb-24">
+        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
+          {countries.map(country => {
+            return (
+              <Link
+                href={`/country/${country.slug}`}
+                key={country.id}
+              >
+                <li className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200 cursor-pointer">
+                  <article className="flex-1 flex flex-col p-8">
+                    <div className="bg-gray-100 rounded-xl">
+                      <div className="relative w-40 h-40 flex-shrink-0 mx-auto">
+                        <Image
+                          src={country.image}
+                          alt={country.name}
+                          layout="fill"
+                          objectFit="contain"
+                        />
+                      </div>
+                    </div>
+                    <h3 className="mt-6 text-gray-900 text-lg font-medium">
+                      {country.name}
+                    </h3>
+                  </article>
+                </li>
               </Link>
-            </article>
-          )
-        })}
+            )
+          })}
+        </ul>
       </main>
     </div>
   )

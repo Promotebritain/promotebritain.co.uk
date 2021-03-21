@@ -1,21 +1,12 @@
-import { Box } from 'theme-ui'
 import { Footer } from './footer'
 import { Header } from './header'
 
 export const Layout = ({ children }) => {
   return (
-    <Box
-      as="div"
-      sx={{
-        position: 'relative',
-        maxWidth: 640,
-        margin: '0 auto',
-        padding: '0 20px',
-      }}
-    >
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Header />
-      {children}
+      <div className="max-w-3xl mx-auto">{children}</div>
       <Footer />
-    </Box>
+    </main>
   )
 }
